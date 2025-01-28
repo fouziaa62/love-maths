@@ -7,45 +7,67 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("You clicked Submit!");
             } else {
                 let gameType = this.getAttribute("data-type");
-                alert(`You clicked ${gameType}`);
+                runGame(gameType);
             }
         });
     }
+    runGame("addition");
 });
 
-function runGame() {
+function runGame(gameType) {
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
-   
 
-    
+    if (gameType === "addition") {
+        displayAdditionQuestion(num1, num2);
+    } else if (gameType === "multiply") {
+        displayMultiplyQuestion(num1, num2);
+    } else if (gameType === "subtract") {
+        displaySubtractQuestion(num1, num2);
+    } else if (gameType === "division") {
+        displayDivideQuestion(num1, num2);
+    } else {
+        alert(`Unknown game type: ${gameType}`);
+        throw `Unknown game type: ${gameType}. Aborting!`;
+    }
 }
+
 function checkAnswer() {
-    
-}   
+   
+}
+
 function calculateCorrectAnswer() {
     
-}   
-function incrementScore() {
-    
 }
+
+function incrementScore() {
+  
+}
+
 function incrementWrongAnswer() {
     
 }
-function displayAdditionQuestion() {
-    document.getElementById("operand1").textContent = num1;
-    document.getElementById("operand2").textContent = num2;
-    document.getElementById("operator").textContent = "+";
-    
 
-    
+function displayAdditionQuestion(operand1, operand2) {
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = "+";
 }
-function displaySubtractQuestion() {
-    
+
+function displaySubtractQuestion(operand1, operand2) {
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = "-";
 }
-function displayMultiplyQuestion() {
-    
+
+function displayMultiplyQuestion(operand1, operand2) {
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = "*";
 }
-function displayDivideQuestion() {
-    
+
+function displayDivideQuestion(operand1, operand2) {
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = "/";
 }
